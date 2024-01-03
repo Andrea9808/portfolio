@@ -5,10 +5,13 @@ export default {
     data() {
         return {
             mostraModale: false,
+            mostraModaleAboutMe: false,
         };
     },
 
     methods: {
+
+        // MODALE CONTACT
         apriModale() {
             console.log("Apri Modale");
             this.mostraModale = true;
@@ -16,6 +19,16 @@ export default {
         chiudiModale() {
             console.log("Chiudi Modale");
             this.mostraModale = false;
+        },
+
+        // MODALE ABOUT ME
+        apriModaleAboutMe() {
+            console.log("Apri Modale");
+            this.mostraModaleAboutMe = true;
+        },
+        chiudiModaleAboutMe() {
+            console.log("Chiudi Modale");
+            this.mostraModaleAboutMe = false;
         }
     }
 };
@@ -32,10 +45,11 @@ export default {
                     <p>Studente di web development con una passione contagiosa per il codice e un approccio solare alla
                         risoluzione delle sfide. Creativo di natura, cerco ispirazione in ogni linea di codice per creare
                         soluzioni uniche e innovative. <span class="portfolio">Esplora il mio mondo di progetti cliccando
-                            sulla sezione Portfolio.</span></p>
+                            sulla sezione Portfolio.</span>
+                    </p>
 
                     <div>
-                        <button class="gap-button">About me</button>
+                        <button @click="apriModaleAboutMe" class="gap-button">About me</button>
                         <button @click="apriModale">Contact</button>
                     </div>
                 </div>
@@ -46,22 +60,56 @@ export default {
             </div>
         </div>
 
+        <!-- MODALE CONTACT -->
         <div v-if="mostraModale" class="modal">
             <div class="modal-content">
                 <span class="chiudi" @click="chiudiModale">&times;</span>
 
-                <div class="cellular">
+                <div class="v-space">
                     <img class="italianflag" src="/italianFlag.png" alt="italianFlag">
                     <p>Recapito telefonico: +39 ...............</p><br>
                 </div>
-                
+
                 <p>Indirizzo mail: ........@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- MODALE ABOUT ME -->
+        <div v-if="mostraModaleAboutMe" class="modal">
+            <div class="modal-content">
+                <span class="chiudi" @click="chiudiModaleAboutMe">&times;</span>
+                <div class="row">
+                    <div class="col-6">
+                        <div>
+                            <h5>Chi sono:</h5>
+                            <p>Ciao! Sono Andrea Manigrasso, uno studente appassionato di web development. Attualmente sto
+                                studiando
+                                una varietà di tecnologie per diventare un Full-Stack Developer.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div>
+                            <h5>Linguaggi di Programmazione Studiati:</h5>
+                            <ul>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>Libreria: Bootstrap</li>
+                                <li>Javascript</li>
+                                <li>Framework VUE. JS</li>
+                                <li>PHP</li>
+                                <li>LARAVEL</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
 .portfolio {
     color: white;
 }
@@ -92,26 +140,30 @@ button {
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
-    max-height: 80%;  
+    max-height: 80%;
 }
 
 .chiudi {
     display: flex;
     justify-content: end;
     color: blueviolet;
-    float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
 }
 
-.cellular{
+.v-space {
     display: flex;
 }
 
-.italianflag{
-   width: 30px;
-   height: 20px;
-   margin-right: 10px;
+.about-me {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.italianflag {
+    width: 30px;
+    height: 20px;
+    margin-right: 10px;
 }
 </style>
