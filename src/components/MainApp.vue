@@ -60,110 +60,130 @@ export default {
             </div>
         </div>
 
-        <!-- MODALE CONTACT -->
-        <div v-if="mostraModale" class="modal">
-            <div class="modal-content">
-                <span class="chiudi" @click="chiudiModale">&times;</span>
+         <!-- MODALE CONTACT -->
+    <transition name="modal" appear>
+      <div v-show="mostraModale" class="modal">
+        <div class="modal-content">
+          <span class="chiudi" @click="chiudiModale">&times;</span>
 
-                <div class="v-space">
-                    <img class="italianflag" src="/italianFlag.png" alt="italianFlag">
-                    <p>Recapito telefonico: +39 ...............</p><br>
-                </div>
+          <div class="v-space">
+            <img class="italianflag" src="/italianFlag.png" alt="italianFlag" />
+            <p>Recapito telefonico: +39 ...............</p><br />
+          </div>
 
-                <p>Indirizzo mail: ........@gmail.com</p>
-            </div>
+          <p>Indirizzo mail: ........@gmail.com</p>
         </div>
+      </div>
+    </transition>
 
-        <!-- MODALE ABOUT ME -->
-        <div v-if="mostraModaleAboutMe" class="modal">
-            <div class="modal-content">
-                <span class="chiudi" @click="chiudiModaleAboutMe">&times;</span>
-                <div class="row">
-                    <div class="col-6">
-                        <div>
-                            <h5>Chi sono:</h5>
-                            <p>Ciao! Sono Andrea Manigrasso, uno studente appassionato di web development. Attualmente sto
-                                studiando
-                                una varietà di tecnologie per diventare un Full-Stack Developer.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div>
-                            <h5>Linguaggi di Programmazione Studiati:</h5>
-                            <ul>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                                <li>Libreria: Bootstrap</li>
-                                <li>Javascript</li>
-                                <li>Framework VUE. JS</li>
-                                <li>PHP</li>
-                                <li>LARAVEL</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <!-- MODALE ABOUT ME -->
+    <transition name="modal" appear>
+      <div v-show="mostraModaleAboutMe" class="modal">
+        <div class="modal-content">
+          <span class="chiudi" @click="chiudiModaleAboutMe">&times;</span>
+          <div class="row">
+            <div class="col-6">
+              <div>
+                <h5>Chi sono:</h5>
+                <p>
+                  Ciao! Sono Andrea Manigrasso, uno studente appassionato di
+                  web development. Attualmente sto studiando una varietà di
+                  tecnologie per diventare un Full-Stack Developer.
+                </p>
+              </div>
             </div>
+
+            <div class="col-6">
+              <div>
+                <h5>Linguaggi di Programmazione Studiati:</h5>
+                <ul>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>Libreria: Bootstrap</li>
+                  <li>Javascript</li>
+                  <li>Framework VUE. JS</li>
+                  <li>PHP</li>
+                  <li>LARAVEL</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </transition>
     </div>
 </template>
 
 <style lang="scss" scoped>
-
 .portfolio {
-    color: white;
+  color: white;
 }
 
 .gap-button {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 button {
-    border-radius: 5px;
-    padding: 5px;
-    background-color: rgb(130, 9, 136);
-    color: white;
-    box-shadow: 0px 0px 10px -3px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(130, 9, 136);
+  color: white;
+  box-shadow: 0px 0px 10px -3px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: rgb(100, 9, 106);
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s;
+}
+
+.modal-enter-to,
+.modal-leave-active {
+  opacity: 1;
+}
+
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
 }
 
 .modal {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    max-height: 80%;
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  max-height: 80%;
 }
 
 .chiudi {
-    display: flex;
-    justify-content: end;
-    color: blueviolet;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+  display: flex;
+  justify-content: end;
+  color: blueviolet;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .v-space {
-    display: flex;
-}
-
-.about-me {
-    max-width: 600px;
-    margin: 0 auto;
+  display: flex;
 }
 
 .italianflag {
-    width: 30px;
-    height: 20px;
-    margin-right: 10px;
+  width: 30px;
+  height: 20px;
+  margin-right: 10px;
 }
 </style>
